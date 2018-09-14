@@ -1,0 +1,523 @@
+              ASCII EIA-861 File Layout                                   January 31, 1995
+
+ Integrated Data Base System (IDBS)                                       For Year: 1993        
+ Utility File Layout, Record Type 1
+ Current Format - 791 Bytes
+
+
+ -----------------------------------------------------------------------------------------
+ |       |                      |             |         |     |      |                   |
+ | Field |      Field Name      |   Columns   | No. of  |  .  |  ..  |      Special      |
+ |  No.  |                      | From    To  | Columns |     |      |    Instructions   |
+ |       |                      |             |         |     |      |                   |
+ |-------|----------------------|-------------|---------|-----|------|-------------------|
+ |       |                      |      |      |         |     |      |                   |
+ |    1  | Utility Recd. Type   | 0001 | 0001 |   001   |  N  |      | Note 1            |
+ |    2  | State Sales Switch   | 0002 | 0002 |   001   |  A  |      |                   |
+ |    3  | Utility Code         | 0003 | 0007 |   005   |  N  |      |                   |
+ |    4  | EIA-861 Status       | 0008 | 0008 |   001   |  A  |      |                   |
+ |    5  | Utility Name         | 0009 | 0038 |   030   |  A  |      |                   |
+ |    6  | Ownership - Federal  | 0039 | 0039 |   001   |  A  |      |                   |
+ |    7  | Ownership - State    | 0040 | 0040 |   001   |  A  |      |                   |
+ |    8  | Ownership - Municip. | 0041 | 0041 |   001   |  A  |      |                   |
+ |    9  | Ownership - Private  | 0042 | 0042 |   001   |  A  |      |                   |
+ |   10  | Ownership - Coop.    | 0043 | 0043 |   001   |  A  |      |                   |
+ |   11  | NERC - ASCC          | 0044 | 0044 |   001   |  A  |      |                   |
+ |   12  | NERC - ECAR          | 0045 | 0045 |   001   |  A  |      |                   |
+ |   13  | NERC - ERCOT         | 0046 | 0046 |   001   |  A  |      |                   |
+ |   14  | NERC - MAIN          | 0047 | 0047 |   001   |  A  |      |                   |
+ |   15  | NERC - MAAC          | 0048 | 0048 |   001   |  A  |      |                   |
+ |   16  | NERC - MAPP          | 0049 | 0049 |   001   |  A  |      |                   |
+ |   17  | NERC - NPCC          | 0050 | 0050 |   001   |  A  |      |                   |
+ |   18  | NERC - SERC          | 0051 | 0051 |   001   |  A  |      |                   |
+ |   19  | NERC - SPP           | 0052 | 0052 |   001   |  A  |      |                   |
+ |   20  | NERC - WSCC          | 0053 | 0053 |   001   |  A  |      |                   |
+ |   21  | NERC - HI            | 0054 | 0054 |   001   |  A  |      |                   |
+ |   22  | NERC - PR/Terr       | 0055 | 0055 |   001   |  A  |      |                   |
+ |   23  | NERC Aff. - Member   | 0056 | 0056 |   001   |  A  |      |                   |
+ |   24  | NERC Aff. - Assoc.   | 0057 | 0057 |   001   |  A  |      |                   |
+ |   25  | NERC Aff. - Nonmemb. | 0058 | 0058 |   001   |  A  |      |                   |
+ |   26  | Hr. Peak Load Winter | 0059 | 0067 |   009   |  N  |      | Note 2            |
+ |   27  | Op. Plant in 10 Yr.  | 0068 | 0068 |   001   |  A  |      |                   |
+ |   28  | Generation           | 0069 | 0069 |   001   |  A  |      |                   |
+ |   29  | Transmission         | 0070 | 0070 |   001   |  A  |      |                   |
+ |   30  | Distribution         | 0071 | 0071 |   001   |  A  |      |                   |
+ |   31  | Hr. Peak Load Summer | 0072 | 0080 |   009   |  N  |      | Note 2            |
+ |   32  | Net Generation       | 0081 | 0093 |   013   |  N  |      | Note 2            |
+ |   33  | Purchases Utilities  | 0094 | 0106 |   013   |  N  |      | Note 2            |
+ |   34  | Purchases Non-Util.  | 0107 | 0119 |   013   |  N  |      | Note 2            |
+ |   35  | Net Exchange         | 0120 | 0132 |   013   |  N  |      | Note 2            |
+ |   36  | Net Wheeling         | 0133 | 0145 |   013   |  N  |      | Note 2            |
+ |   37  | Total Sources        | 0146 | 0158 |   013   |  N  |      | Note 2            |
+ |   38  | Sales Consumers      | 0159 | 0171 |   013   |  N  |      | Note 2            |
+ |   39  | Sales Resale         | 0172 | 0184 |   013   |  N  |      | Note 2            |
+ |   40  | Energy No Charge     | 0185 | 0197 |   013   |  N  |      | Note 2            |
+ |   41  | Energy Used          | 0198 | 0210 |   013   |  N  |      | Note 2            |
+ |   42  | Total Losses         | 0211 | 0223 |   013   |  N  |      | Note 2            |
+ |   43  | Total Disposition    | 0224 | 0236 |   013   |  N  |      | Note 2            |
+ |   44  | Revenues Consumers   | 0237 | 0243 |   007   |  N  |      | Note 2            |
+ |   45  | Revenues Resale      | 0244 | 0250 |   007   |  N  |      | Note 2            |
+ |   46  | Revenues Other       | 0251 | 0257 |   007   |  N  |      | Note 2            |
+ |   47  | Revenues Non-Elect.  | 0258 | 0264 |   007   |  N  |      | Not Collected 1990|
+ |   48  | Revenues Non-Util.   | 0265 | 0271 |   007   |  N  |      | Not Collected 1990|
+ |   49  | Revenues Total       | 0272 | 0278 |   007   |  N  |      | Note 2            |
+ |   50  | Exchange - In        | 0279 | 0291 |   013   |  N  |      | Note 2            |
+ |   51  | Exchange - Out       | 0292 | 0304 |   013   |  N  |      | Note 2            |
+ |   52  | Wheeling - In        | 0305 | 0317 |   013   |  N  |      | Note 2            |
+ |   53  | Wheeling - Out       | 0318 | 0330 |   013   |  N  |      | Note 2            |
+ |   54  | Ownership - Subdiv.  | 0331 | 0331 |   001   |  A  |      |                   |
+ |   55  | State Sales          | 0332 | 0683 |   352   |  N  |      | Note 3            |
+ |   56  | Demand Side Manage.  | 0684 | 0684 |   001   |  A  |      |                   |
+ |   57  | Revenues Refunds     | 0685 | 0691 |   007   |  N  |      | Note 2            |
+ |   58  | EIA-861 Notes        | 0692 | 0791 |   100   |  A  |      |                   |
+ |       |                      |      |      |         |     |      |                   |
+ -----------------------------------------------------------------------------------------
+
+
+ . A - Alpha/Numeric    .. LB - Left Justify, Blank Filled
+   N - Numeric             LZ - Left Justify, Zero Filled
+   D - Duplicate           RB - Right Justify, Blank Filled
+   S - Skip                RZ - Right Justify, Zero Filled
+                        Unless otherwise noted all alpha/numeric fields
+                        are left justified, blank filled. All numeric
+                        fields are right justified, zero filled.
+                        Numeric fields in this layout do not contain
+                        decimal points.
+
+
+ Note 1: This field must contain a '1' for this layout to apply.
+ Note 2: This numeric field is in the unpacked decimal format.
+ Note 3: The state sales field contains a 2x6 two dimensional
+         array. The first two states from Form EIA-861 Schedule
+         IV are stored here. Any remaining states from Schedule
+         IV are stored in Record Type 3. The logical layout of
+         the 352 columns follows. The format is Common Business
+         Orientated Language (COBOL).
+
+         05 STATE-SALES OCCURS 2 TIMES.
+            10 STATE-CODE                      PIC X(2).
+            10 REVENUE OCCURS 6 TIMES          PIC S9(7).
+            10 MWH OCCURS 6 TIMES              PIC S9(13).
+            10 CONSUMERS OCCURS 6 TIMES        PIC S9(9).
+
+         The REVENUE, MWH and CONSUMERS fields are in the unpacked
+         decimal format. The six occurrences correspond to the
+         columns B thru G of Form EIA-861 Schedule IV.
+
+
+
+
+ Preliminary 1993 Data
+ Integrated Data Base System (IDBS)
+ Utility File Layout, Record Type 2
+ Current Format - 1927 Bytes
+
+
+ -----------------------------------------------------------------------------------------
+ |       |                      |             |         |     |      |                   |
+ | Field |      Field Name      |   Columns   | No. of  |  .  |  ..  |      Special      |
+ |  No.  |                      | From    To  | Columns |     |      |    Instructions   |
+ |       |                      |             |         |     |      |                   |
+ |-------|----------------------|-------------|---------|-----|------|-------------------|
+ |       |                      |      |      |         |     |      |                   |
+ |    1  | Utility Record Type  | 0001 | 0001 |   001   |  N  |      | Note 1            |
+ |    2  | Utility Code         | 0002 | 0006 |   005   |  N  |      |                   |
+ |    3  | Other Util. Cd.      | 0007 | 0011 |   005   |  N  |      |                   |
+ |    4  | Other Util. Nm.      | 0012 | 0041 |   030   |  A  |      |                   |
+ |    5  | EE - Ee              | 0042 | 0097 |   056   |  N  |      | Note 2            |
+ |    6  | EE - Apr             | 0098 | 0153 |   056   |  N  |      | Note 2            |
+ |    7  | DLC - Ee             | 0154 | 0209 |   056   |  N  |      | Note 2            |
+ |    8  | DLC - Ppr            | 0210 | 0265 |   056   |  N  |      | Note 2            |
+ |    9  | DLC - Apr            | 0266 | 0321 |   056   |  N  |      | Note 2            |
+ |   10  | IL - Ee              | 0322 | 0377 |   056   |  N  |      | Note 2            |
+ |   11  | IL - Ppr             | 0378 | 0433 |   056   |  N  |      | Note 2            |
+ |   12  | IL - Apr             | 0434 | 0489 |   056   |  N  |      | Note 2            |
+ |   13  | OLM - Ee             | 0490 | 0545 |   056   |  N  |      | Note 2            |
+ |   14  | OLM - Ppr            | 0546 | 0601 |   056   |  N  |      | Note 2            |
+ |   15  | OLM - Apr            | 0602 | 0657 |   056   |  N  |      | Note 2            |
+ |   16  | ODP - Ee             | 0658 | 0713 |   056   |  N  |      | Note 2            |
+ |   17  | ODP - Ppr            | 0714 | 0769 |   056   |  N  |      | Note 2            |
+ |   18  | ODP - Apr            | 0770 | 0825 |   056   |  N  |      | Note 2            |
+ |   19  | LB - Ee              | 0826 | 0881 |   056   |  N  |      | Note 2            |
+ |   20  | LB - Apg             | 0882 | 0937 |   056   |  N  |      | Note 2            |
+ |   21  | TDP - Ee             | 0938 | 0993 |   056   |  N  |      | Note 2            |
+ |   22  | TDP - Ppr            | 0994 | 1049 |   056   |  N  |      | Note 2            |
+ |   23  | TDP - Apr            | 1050 | 1105 |   056   |  N  |      | Note 2            |
+ |   24  | EE - Ee              | 1106 | 1123 |   018   |  N  |      | Note 3            |
+ |   25  | EE - Apr             | 1124 | 1141 |   018   |  N  |      | Note 3            |
+ |   26  | DLC - Ee             | 1142 | 1159 |   018   |  N  |      | Note 3            |
+ |   27  | DLC - Ppr            | 1160 | 1177 |   018   |  N  |      | Note 3            |
+ |   28  | DLC - Apr            | 1178 | 1195 |   018   |  N  |      | Note 3            |
+ |   29  | IL - Ee              | 1196 | 1213 |   018   |  N  |      | Note 3            |
+ |   30  | IL - Ppr             | 1214 | 1231 |   018   |  N  |      | Note 3            |
+ |   31  | IL - Apr             | 1232 | 1249 |   018   |  N  |      | Note 3            |
+ |   32  | OLM - Ee             | 1250 | 1267 |   018   |  N  |      | Note 3            |
+ |   33  | OLM - Ppr            | 1268 | 1285 |   018   |  N  |      | Note 3            |
+ |   34  | OLM - Apr            | 1286 | 1303 |   018   |  N  |      | Note 3            |
+ |   35  | ODP - Ee             | 1304 | 1321 |   018   |  N  |      | Note 3            |
+ |   36  | ODP - Ppr            | 1322 | 1339 |   018   |  N  |      | Note 3            |
+ |   37  | ODP - Apr            | 1340 | 1357 |   018   |  N  |      | Note 3            |
+ |   38  | LB - Ee              | 1358 | 1375 |   018   |  N  |      | Note 3            |
+ |   39  | LB - Apg             | 1376 | 1393 |   018   |  N  |      | Note 3            |
+ |   40  | TDP - Ee             | 1394 | 1411 |   018   |  N  |      | Note 3            |
+ |   41  | TDP - Ppr            | 1412 | 1429 |   018   |  N  |      | Note 3            |
+ |   42  | TDP - Apr            | 1430 | 1447 |   018   |  N  |      | Note 3            |
+ |   43  | Direct Util. Cost    | 1448 | 1474 |   027   |  N  |      | Note 4            |
+ |   44  | Ee                   | 1475 | 1501 |   027   |  N  |      | Note 4            |
+ |   45  | Dlc                  | 1502 | 1528 |   027   |  N  |      | Note 4            |
+ |   46  | Il                   | 1529 | 1555 |   027   |  N  |      | Note 4            |
+ |   47  | Olm                  | 1556 | 1582 |   027   |  N  |      | Note 4            |
+ |   48  | Odp                  | 1583 | 1609 |   027   |  N  |      | Note 4            |
+ |   49  | Lb                   | 1610 | 1636 |   027   |  N  |      | Note 4            |
+ |   50  | Indirect Util. Cost  | 1637 | 1663 |   027   |  N  |      | Note 4            |
+ |   51  | Admin.               | 1664 | 1690 |   027   |  N  |      | Note 4            |
+ |   52  | Mark.                | 1691 | 1717 |   027   |  N  |      | Note 4            |
+ |   53  | Mon. & Eva.          | 1718 | 1744 |   027   |  N  |      | Note 4            |
+ |   54  | Util-earn. Incen.    | 1745 | 1771 |   027   |  N  |      | Note 4            |
+ |   55  | Other                | 1772 | 1798 |   027   |  N  |      | Note 4            |
+ |   56  | Total Util. Cost     | 1799 | 1825 |   027   |  N  |      | Note 4            |
+ |   57  | Total Nonutil. Cost  | 1826 | 1852 |   027   |  N  |      | Note 4            |
+ |   58  | Total DSM Cost       | 1853 | 1879 |   027   |  N  |      | Note 4            |
+ |   59  | END - Heat           | 1880 | 1882 |   003   |  A  |      | Note 5            |
+ |   60  | END - Cool           | 1883 | 1885 |   003   |  A  |      | Note 5            |
+ |   61  | END - Water          | 1886 | 1888 |   003   |  A  |      | Note 5            |
+ |   62  | END - Light.         | 1889 | 1891 |   003   |  A  |      | Note 5            |
+ |   63  | END - Build.         | 1892 | 1894 |   003   |  A  |      | Note 5            |
+ |   64  | END - New Const.     | 1895 | 1897 |   003   |  A  |      | Note 5            |
+ |   65  | END - Appli.         | 1898 | 1900 |   003   |  A  |      | Note 5            |
+ |   66  | END - Motors         | 1901 | 1903 |   003   |  A  |      | Note 5            |
+ |   67  | END - Proc. Heat     | 1904 | 1906 |   003   |  A  |      | Note 5            |
+ |   68  | END - Elect.         | 1907 | 1909 |   003   |  A  |      | Note 5            |
+ |   69  | END - Other          | 1910 | 1912 |   003   |  A  |      | Note 5            |
+ |   70  | TYPE - Audits        | 1913 | 1915 |   003   |  A  |      | Note 6            |
+ |   71  | TYPE - Rebates       | 1916 | 1918 |   003   |  A  |      | Note 6            |
+ |   72  | TYPE - Loans         | 1919 | 1921 |   003   |  A  |      | Note 6            |
+ |   73  | TYPE - Other Incen.  | 1922 | 1924 |   003   |  A  |      | Note 6            |
+ |   74  | TYPE - Other         | 1925 | 1927 |   003   |  A  |      | Note 6            |
+ |       |                      |      |      |         |     |      |                   |
+ -----------------------------------------------------------------------------------------
+
+
+ . A - Alpha/Numeric    .. LB - Left Justify, Blank Filled
+   N - Numeric             LZ - Left Justify, Zero Filled
+   D - Duplicate           RB - Right Justify, Blank Filled
+   S - Skip                RZ - Right Justify, Zero Filled
+                        Unless otherwise noted all alpha/numeric fields
+                        are left justified, blank filled. All numeric
+                        fields are right justified, zero filled.
+
+
+ Note 1: This field must contain a '2' for this layout to apply.
+
+ Note 2: Fields  5 thru 23 contain one dimensional arrays which
+         occur  8 times. The arrays contain data from Form EIA-861
+         Schedule V Part A. The nineteen fields correspond to the
+         nineteen rows of Part A. and the eight occurrences corr-
+         espond to the eight columns.
+         The logical layout of the 032 columns follows. The format
+         is Common Business Orientated Language (COBOL).
+
+         05 FIELDS5-23 OCCURS 8 TIMES.
+            10 VALUES1-8         PIC S9(7).
+
+         All elements are in the unpacked decimal format.
+
+ Note 3: Fields 24 thru 42 contain one dimensional arrays which
+         occur  2 times. The arrays contain data from Form EIA-861
+         Schedule V Part B. The nineteen fields correspond to the
+         nineteen rows of Part B. and the two cccurrences corres-
+         pond to the two columns.
+         The logical layout of the 010 columns follows. The format
+         is Common Business Orientated Language (COBOL).
+
+         05 FIELDS24-432OCCURS 2 TIMES.
+            10 VALUES1-2         PIC S9(9).
+
+         All elements are in the unpacked decimal format.
+
+ Note 4: Fields 43 thru 58 contain one dimensional arrays which
+         occur  3 times. The arrays contain data from Form EIA-861
+         Schedule V Part C. The sixteen fields correspond to the
+         sixteen rows of Part C. and the three occurrences corr-
+         espond to the three columns.
+         The logical layout of the 015 columns follows. The format
+         is Common Business Orientated Language (COBOL).
+
+         05 FIELDS43-58 OCCURS 3 TIMES.
+            10 VALUES1-3         PIC S9(9).
+
+         All elements are in the unpacked decimal format.
+
+ Note 5: Fields 59 thru 69 contain one dimensional arrays which
+         occur  3 times. The arrays contain data from Form EIA-861
+         Schedule V Part D. The eleven fields correspond to the
+         eleven rows of Part D End Uses and the three occurrences
+         correspond to the three columns.
+         The logical layout of the 003 columns follows. The format
+         is Common Business Orientated Language (COBOL).
+
+         05 FIELDS59-69 OCCURS 3 TIMES.
+            10 VALUES1-3         PIC X(1).
+
+         The character Y indicates the box was checked on the form.
+         The character N or a space indicates the box was not checked.
+
+ Note 6: Fields 70 thru 74 contain one dimensional arrays which
+         occur  3 times. The arrays contain data from Form EIA-861
+         Schedule V Part D. The five fields correspond to the five
+         rows of Part D Program Types and the three occurrences
+         correspond to the three columns.
+         The logical layout of the 003 columns follows. The format
+         is Common Business Orientated Language (COBOL).
+
+         05 FIELDS70-74 OCCURS 3 TIMES.
+            10 VALUES1-3         PIC X(1).
+
+         The character Y indicates the box was checked on the form.
+         The character N or a space indicates the box was not checked.
+
+ Integrated Data Base System (IDBS)
+ Utility ASCII File Layout, Record Type 7
+ Current Format - 122 Bytes
+
+
+ -----------------------------------------------------------------------------------------
+ |       |                      |             |         |     |      |                   |
+ | Field |      Field Name      |   Columns   | No. of  |  .  |  ..  |      Special      |
+ |  No.  |                      | From    To  | Columns |     |      |    Instructions   |
+ |       |                      |             |         |     |      |                   |
+ |-------|----------------------|-------------|---------|-----|------|-------------------|
+ |       |                      |      |      |         |     |      |                   |
+ |    1  | Utility Record Type  | 0001 | 0001 |   001   |  N  |      | Note 1            |
+ |    2  | Utility Code         | 0002 | 0006 |   005   |  N  |      |                   |
+ |    3  | Eng Analysis         | 0007 | 0007 |   001   |  A  |      | Note 2            |
+ |    4  | Stat Analysis        | 0008 | 0008 |   001   |  A  |      | Note 2            |
+ |    5  | Bill Analysis        | 0009 | 0009 |   001   |  A  |      | Note 2            |
+ |    6  | Whl Metering         | 0010 | 0010 |   001   |  A  |      | Note 2            |
+ |    7  | Spot Metering        | 0011 | 0011 |   001   |  A  |      | Note 2            |
+ |    8  | Est Other Util       | 0012 | 0012 |   001   |  A  |      | Note 2            |
+ |    9  | End Metering         | 0013 | 0013 |   001   |  A  |      | Note 2            |
+ |   10  | Manufac Estimate     | 0014 | 0014 |   001   |  A  |      | Note 2            |
+ |   11  | Hybrid Methods       | 0015 | 0015 |   001   |  A  |      | Note 2            |
+ |   12  | Other                | 0016 | 0016 |   001   |  A  |      | Note 2            |
+ |   13  | None                 | 0017 | 0017 |   001   |  A  |      | Note 2            |
+ |   14  | Other Text           | 0018 | 0047 |   030   |  A  |      | Note 2            |
+ |   15  | Verification Process | 0048 | 0048 |   001   |  A  |      | Note 3            |
+ |   16  | Verification Install | 0049 | 0049 |   001   |  A  |      | Note 4            |
+ |   17  | Stipulated Savings   | 0050 | 0050 |   001   |  A  |      | Note 4            |
+ |   18  | Hours Usage          | 0051 | 0051 |   001   |  A  |      | Note 4            |
+ |   19  | Billing Metering     | 0052 | 0052 |   001   |  A  |      | Note 4            |
+ |   20  | Whole Metering       | 0053 | 0053 |   001   |  A  |      | Note 4            |
+ |   21  | End-Use Metering     | 0054 | 0054 |   001   |  A  |      | Note 4            |
+ |   22  | Site-Specific Analy  | 0055 | 0055 |   001   |  A  |      | Note 4            |
+ |   23  | Stat Adj Analysis    | 0056 | 0056 |   001   |  A  |      | Note 4            |
+ |   24  | Other                | 0057 | 0057 |   001   |  A  |      | Note 4            |
+ |   25  | Other Text           | 0058 | 0087 |   030   |  A  |      | Note 4            |
+ |   26  | Internal Require     | 0088 | 0088 |   001   |  A  |      | Note 5            |
+ |   27  | State Fed Require    | 0089 | 0089 |   001   |  A  |      | Note 5            |
+ |   28  | EPA Environ Require  | 0090 | 0090 |   001   |  A  |      | Note 5            |
+ |   29  | Terms Contract       | 0091 | 0091 |   001   |  A  |      | Note 5            |
+ |   30  | Other                | 0092 | 0092 |   001   |  A  |      | Note 5            |
+ |   31  | Other Text           | 0093 | 0122 |   030   |  A  |      | Note 5            |
+ |       |                      |      |      |         |     |      |                   |
+ -----------------------------------------------------------------------------------------
+
+
+ . A - Alpha/Numeric    .. LB - Left Justify, Blank Filled
+   N - Numeric             LZ - Left Justify, Zero Filled
+   D - Duplicate           RB - Right Justify, Blank Filled
+   S - Skip                RZ - Right Justify, Zero Filled
+                        Unless otherwise noted all alpha/numeric fields
+                        are left justified, blank filled. All numeric
+                        fields are right justified, zero filled.
+
+
+ Note 1: This field must contain a '7' for this layout to apply.
+
+ Note 2: Fields  4 thru 15 contain data from Schedule V, Part E,
+         Question 1.
+
+         The character P indicates Primary.
+         The character S indicates Secondary.
+         A space indicates the box was not checked.
+
+ Note 3: Field 16 contains the data from Schedule V, Part E,
+         Question 2.
+
+         The character Y indicates Yes.
+         The character N indicates No.
+         A space indicates the box was not checked.
+
+ Note 4: Fields 17 thru 26 contain data from Schedule V, Part E,
+         Question 3.
+
+         The character P indicates Primary.
+         The character S indicates Secondary.
+         A space indicates the box was not checked.
+
+ Note 5: Fields 27 thru 32 contain data from Schedule V, Part E,
+         Question 4.
+
+         The character P indicates Primary.
+         The character S indicates Secondary.
+         A space indicates the box was not checked.
+
+ Preliminary 1993 Data
+ Integrated Data Base System (IDBS)
+ Utility File Layout, Record Type 3
+ Current Format - 1942 Bytes
+
+
+ -----------------------------------------------------------------------------------------
+ |       |                      |             |         |     |      |                   |
+ | Field |      Field Name      |   Columns   | No. of  |  .  |  ..  |      Special      |
+ |  No.  |                      | From    To  | Columns |     |      |    Instructions   |
+ |       |                      |             |         |     |      |                   |
+ |-------|----------------------|-------------|---------|-----|------|-------------------|
+ |       |                      |      |      |         |     |      |                   |
+ |    1  | Utility Record Type  | 0001 | 0001 |   001   |  N  |      | Note 1            |
+ |    2  | Utility Code         | 0002 | 0006 |   005   |  N  |      |                   |
+ |    3  | State Sales          | 0007 | 1942 |  1936   |  N  |      | Note 2            |
+ |       |                      |      |      |         |     |      |                   |
+ -----------------------------------------------------------------------------------------
+
+
+ . A - Alpha/Numeric    .. LB - Left Justify, Blank Filled
+   N - Numeric             LZ - Left Justify, Zero Filled
+   D - Duplicate           RB - Right Justify, Blank Filled
+   S - Skip                RZ - Right Justify, Zero Filled
+                        Unless otherwise noted all alpha/numeric fields
+                        are left justified, blank filled. All numeric
+                        fields are right justified, zero filled.
+                        Numeric fields in this layout do not contain
+                        decimal points.
+
+
+ Note 1: This field must contain a '3' for this layout to apply.
+ Note 2: The state sales field contains a 11x6 two dimensional
+         array. The first two states from Form EIA-861 Schedule IV
+         are contained in the state sales field of Record Type 1.
+         The remaining states are contained in this record type.
+         The logical layout of the 1936 columns follows. The format
+         is Common Business Orientated Language (COBOL).
+
+         05 STATE-SALES OCCURS 11 TIMES.
+            10 STATE-CODE                      PIC X(2).
+            10 REVENUE OCCURS 6 TIMES          PIC S9(7).
+            10 MWH OCCURS 6 TIMES              PIC S9(13).
+            10 CONSUMERS OCCURS 6 TIMES        PIC S9(9).
+
+         The REVENUE, MWH and CONSUMERS fields are in the unpacked
+         decimal format. The six occurrences correspond to the
+         columns B thru G of Form EIA-861 Schedule IV.
+
+
+
+
+ Preliminary 1993 Data
+ Integrated Data Base System (IDBS)
+ Utility File Layout, Record Type 4
+ Current Format - 1472 Bytes
+
+
+ -----------------------------------------------------------------------------------------
+ |       |                      |             |         |     |      |                   |
+ | Field |      Field Name      |   Columns   | No. of  |  .  |  ..  |      Special      |
+ |  No.  |                      | From    To  | Columns |     |      |    Instructions   |
+ |       |                      |             |         |     |      |                   |
+ |-------|----------------------|-------------|---------|-----|------|-------------------|
+ |       |                      |      |      |         |     |      |                   |
+ |    1  | Utility Record Type  | 0001 | 0001 |   001   |  N  |      | Note 1            |
+ |    2  | Utility Code         | 0002 | 0006 |   005   |  N  |      |                   |
+ |    3  | Nonutility Firm 1993 | 0007 | 0017 |   011   |  N  |      | Note 2            |
+ |    4  | Nonutility Plan 1994 | 0018 | 0028 |   011   |  N  |      | Note 2            |
+ |    5  | Nonutility Plan 1995 | 0029 | 0039 |   011   |  N  |      | Note 2            |
+ |    6  | Nonutility Plan 1996 | 0040 | 0050 |   011   |  N  |      | Note 2            |
+ |    7  | Nonutility Plan 1997 | 0051 | 0061 |   011   |  N  |      | Note 2            |
+ |    8  | Nonutility Plan 1998 | 0062 | 0072 |   011   |  N  |      | Note 2            |
+ |    9  | Nonutility N & A     | 0073 | 1472 |  1400   |  N  |      | Note 3            |
+ |       |                      |      |      |         |     |      |                   |
+ -----------------------------------------------------------------------------------------
+
+
+ . A - Alpha/Numeric    .. LB - Left Justify, Blank Filled
+   N - Numeric             LZ - Left Justify, Zero Filled
+   D - Duplicate           RB - Right Justify, Blank Filled
+   S - Skip                RZ - Right Justify, Zero Filled
+                        Unless otherwise noted all alpha/numeric fields
+                        are left justified, blank filled. All numeric
+                        fields are right justified, zero filled.
+                        Numeric fields in this layout do not contain
+                        decimal points.
+
+
+ Note 1: This field must contain a '4' for this layout to apply.
+ Note 2: This numeric field is in the unpacked decimal format.
+ Note 3: The nonutility name and address field contains a one
+         dimensional array that occurs 100 times.
+         The logical layout of the 1400 columns follows. The format
+         is Common Business Orientated Language (COBOL).
+
+         05 NONUTILITY OCCURS 100 TIMES.
+            10 NONUTILITY-TYPE                 PIC 9(1).
+            10 NONUTILITY-CODE                 PIC 9(6).
+            10 NONUTILITY-MW                   PIC S9(7).
+
+         The NONUTILITY-TYPE contains either a one (1) or a two
+         (2) that corresponds with column one or column two of
+         Form EIA-861 Schedule VI.
+
+
+
+
+ Preliminary 1993 Data
+ Integrated Data Base System (IDBS)
+ Utility File Layout, Record Type 5
+ Current Format - 1406 Bytes
+
+
+ -----------------------------------------------------------------------------------------
+ |       |                      |             |         |     |      |                   |
+ | Field |      Field Name      |   Columns   | No. of  |  .  |  ..  |      Special      |
+ |  No.  |                      | From    To  | Columns |     |      |    Instructions   |
+ |       |                      |             |         |     |      |                   |
+ |-------|----------------------|-------------|---------|-----|------|-------------------|
+ |       |                      |      |      |         |     |      |                   |
+ |    1  | Utility Record Type  | 0001 | 0001 |   001   |  N  |      | Note 1            |
+ |    2  | Utility Code         | 0002 | 0006 |   005   |  N  |      |                   |
+ |    3  | Nonutility N & A     | 0007 | 1406 |  1400   |  N  |      | Note 2            |
+ |       |                      |      |      |         |     |      |                   |
+ -----------------------------------------------------------------------------------------
+
+
+ . A - Alpha/Numeric    .. LB - Left Justify, Blank Filled
+   N - Numeric             LZ - Left Justify, Zero Filled
+   D - Duplicate           RB - Right Justify, Blank Filled
+   S - Skip                RZ - Right Justify, Zero Filled
+                        Unless otherwise noted all alpha/numeric fields
+                        are left justified, blank filled. All numeric
+                        fields are right justified, zero filled.
+                        Numeric fields in this layout do not contain
+                        decimal points.
+
+
+ Note 1: This field must contain a '5' for this layout to apply.
+ Note 2: The nonutility name and address field contains a one
+         dimensional array that occurs 100 times.
+         This record type will contain nonutility power producer
+         information for those utilities with more than 100 entries
+         on Form EIA-861 Schedule VI.
+         The logical layout of the 1400 columns follows. The format
+         is Common Business Orientated Language (COBOL).
+
+         05 NONUTILITY OCCURS 100 TIMES.
+            10 NONUTILITY-TYPE                 PIC 9(1).
+            10 NONUTILITY-CODE                 PIC 9(6).
+            10 NONUTILITY-MW                   PIC S9(7).
+
+         The NONUTILITY-TYPE contains either a one (1) or a two
+         (2) that corresponds with column one or column two of
+         Form EIA-861 Schedule VI.
+
+
+
